@@ -2,21 +2,34 @@
 
 int main()
 {
-    char str[50] = "abcdefghijklmnopqrstuvwxyz";
-    scanf_s("%s", str, 50);
+    char str[100];
+    bool isNumber;
+    do
+    {
+        printf("Input integer number:\n");
 
-    printf("printf:\n");
-    printf("%s\n\n", str);
+        scanf_s("%s", str, 100);
+        isNumber = true;
+        for (int i = 0; str[i] != '\0'; i++)
+        {
+            if (str[i] < '0' || str[i] > '9')
+            {
+                isNumber = false;
+                break;
+            }
+        }
+    } while (!isNumber);
 
-    printf("cycle:\n");
-    for (int i = 0; i < 50; i++)
-        printf("%c", str[i]);
+    int num = 0;
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        num = num * 10 + str[i] - '0';
+    }
 
-    printf("\n\n");
+    printf("%d\n", num);
 
-    printf("codes:\n");
-    for (int i = 0; i < 50; i++)
-        printf("%d, ", (int)str[i]);
-
-    printf("\n\n");
+    system("pause");
+    return 0;
 }
+
+
